@@ -1,0 +1,4 @@
+(executable
+  (name chatwheel) ; asking dune to build hello.ml
+    (public_name chatwheel)) ; name of the binary
+
