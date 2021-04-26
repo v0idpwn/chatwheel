@@ -1,5 +1,5 @@
 (executable
   (name chatwheel)
   (public_name chatwheel)
-  (libraries opium)
+  (libraries opium cohttp cohttp-lwt-unix str)
 )
