@@ -1,7 +1,7 @@
 [
-  {"name": "Faceless Void - From a place beyond time", "file": "faceless-void-from-a-place.mp3", "tags": ["Faceless Void"]},
-  {"name": "Sniper - BOOM, HEADSHOT!", "file": "sniper-boom-headshot.mp3", "tags": ["Sniper"]},
-  {"name": "Faceless Void - Feel my mace!", "file": "faceless-void-feel-my-mace.mp3", "tags": ["Faceless Void"]},
-  {"name": "Earthshaker - It was your own damn fault", "file": "shaker-your-damn-fault.mp3", "tags": ["Earthshaker"]},
-  {"name": "Rubick - What a surprise!", "file": "what-a-surprise.mp3", "tags": ["Rubick"]}
+  {"name": "Faceless Void - From a place beyond time", "url": "faceless-void-from-a-place.mp3", "tags": ["Faceless Void"]},
+  {"name": "Sniper - BOOM, HEADSHOT!", "url": "sniper-boom-headshot.mp3", "tags": ["Sniper"]},
+  {"name": "Faceless Void - Feel my mace!", "url": "faceless-void-feel-my-mace.mp3", "tags": ["Faceless Void"]},
+  {"name": "Earthshaker - It was your own damn fault", "url": "shaker-your-damn-fault.mp3", "tags": ["Earthshaker"]},
+  {"name": "Rubick - What a surprise!", "url": "what-a-surprise.mp3", "tags": ["Rubick"]}
 ]
