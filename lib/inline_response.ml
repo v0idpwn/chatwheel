@@ -19,13 +19,18 @@ let build_inline_query_answer (id : string) (audios : Audio.audio list) :
   { inline_query_id = id; results = audio_results }
 
 let to_json (answer : answer_inline_query) : Yojson.Safe.t =
-  `Assoc [
-        ("inline_query_id", `String answer.inline_query_id);
-        ("results", `List (List.map (fun result ->
-          `Assoc [
-            ("audio_url", `String result.audio_url);
-            ("title", `String result.title);
-            ("caption", `String result.audio_url);
-          ]) answer.results))
-  ]
-
+  `Assoc
+    [
+      ("inline_query_id", `String answer.inline_query_id);
+      ( "results",
+        `List
+          (List.map
+             (fun result ->
+               `Assoc
+                 [
+                   ("audio_url", `String result.audio_url);
+                   ("title", `String result.title);
+                   ("caption", `String result.audio_url);
+                 ])
+             answer.results) );
+    ]
