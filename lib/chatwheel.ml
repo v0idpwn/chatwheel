@@ -12,15 +12,17 @@ let sys_json _req =
   in
   Response.of_json json |> Lwt.return
 
-let show_audios _req =
-  let audios = Yojson.Safe.from_file "./priv/data/audio.json" in
-  Lwt.return (Response.of_json audios)
-
 let webhook req =
   let* body_json = Request.to_json_exn req in
-  Lwt.return (Response.of_plain_text (Inline_input.build_query body_json).query)
+  let query = Inline_input.build_query body_json in
+  let audios = Audio.top_search query.query in
+  let json_resp = Yojson.Safe.to_string (Inline_response.to_json
+  (Inline_response.build_inline_query_answer query.id audios)) in
+  let _ = print_endline json_resp in
+  let _= Telegram_client.answer_inline_query (`String json_resp) in 
+  Lwt.return (Response.of_plain_text "")
 
 let _ =
-  App.empty |> App.get "/sys" sys_json |> App.get "/" show_audios
+  App.empty |> App.get "/sys" sys_json
   |> App.post "/webhook" webhook
   |> App.run_command
