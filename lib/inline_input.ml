@@ -21,12 +21,14 @@
 
 open Yojson.Basic.Util
 
-type inline_query = {id: string; query: string}
+type inline_query = { id : string; query : string }
 
 let build_query json =
   let inline_query = Yojson.Safe.Util.member "inline_query" json in
-  let query = Yojson.Safe.Util.to_string (Yojson.Safe.Util.member "query"
-    inline_query) in
-  let id = Yojson.Safe.Util.to_string (Yojson.Safe.Util.member "id"
-    inline_query) in
-  {id =  id; query =  query}
+  let query =
+    Yojson.Safe.Util.to_string (Yojson.Safe.Util.member "query" inline_query)
+  in
+  let id =
+    Yojson.Safe.Util.to_string (Yojson.Safe.Util.member "id" inline_query)
+  in
+  { id; query }
