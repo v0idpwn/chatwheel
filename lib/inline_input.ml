@@ -19,8 +19,6 @@
   ```
 *)
 
-open Yojson.Basic.Util
-
 type inline_query = { id : string; query : string }
 
 let build_query json =
