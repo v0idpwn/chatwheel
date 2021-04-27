@@ -27,7 +27,14 @@ let rec take n xs =
 
 let top_search search =
   let audios = from_json get_audios in
-  let filtered = List.filter (fun a -> is_substr a.name search) audios in
+  let filtered =
+    List.filter
+      (fun a ->
+        is_substr
+          (String.lowercase_ascii a.name)
+          (String.lowercase_ascii search))
+      audios
+  in
   let max_results = min (List.length filtered) 10 in
   let _ = List.map (fun x -> print_endline x.name) filtered in
   take max_results filtered
