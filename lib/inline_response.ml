@@ -33,7 +33,6 @@ let to_json (answer : answer_inline_query) : Yojson.Safe.t =
                    ("type", `String "audio");
                    ("audio_url", `String result.audio_url);
                    ("title", `String result.title);
-                   ("caption", `String result.audio_url);
                    ("id", `String result.id);
                  ])
              answer.results) );
