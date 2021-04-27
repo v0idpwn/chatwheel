@@ -5,7 +5,7 @@ let ( let* ) = Lwt.bind
 
 let url token =
   String.concat ""
-    [ "https://api.telegram.org/bot/"; token; "/answerInlineQuery" ]
+    [ "https://api.telegram.org/bot"; token; "/answerInlineQuery" ]
 
 let header : Cohttp.Header.t =
   Header.add (Header.init ()) "Content-Type" "application/json"
