@@ -1,7 +1,7 @@
 [
-  {"id": 1, "name": "Faceless Void - From a place beyond time", "url": "faceless-void-from-a-place.mp3", "tags": ["Faceless Void"]},
-  {"id": 2, "name": "Sniper - BOOM, HEADSHOT!", "url": "sniper-boom-headshot.mp3", "tags": ["Sniper"]},
-  {"id": 3,"name": "Faceless Void - Feel my mace!", "url": "faceless-void-feel-my-mace.mp3", "tags": ["Faceless Void"]},
-  {"id": 4,"name": "Earthshaker - It was your own damn fault", "url": "shaker-your-damn-fault.mp3", "tags": ["Earthshaker"]},
-  {"id": 5,"name": "Rubick - What a surprise!", "url": "what-a-surprise.mp3", "tags": ["Rubick"]}
+  {"id": 1, "name": "Faceless Void - From a place beyond time", "url": "https://static.wikia.nocookie.net/dota2_gamepedia/images/0/04/Vo_faceless_void_face_spawn_04.mp3", "tags": ["Faceless Void"]},
+  {"id": 2, "name": "Sniper - BOOM, HEADSHOT!", "url": "https://static.wikia.nocookie.net/dota2_gamepedia/images/3/39/Vo_sniper_snip_ability_assass_03.mp3", "tags": ["Sniper"]},
+  {"id": 3,"name": "Faceless Void - Feel my mace!", "url": "https://static.wikia.nocookie.net/dota2_gamepedia/images/5/58/Vo_faceless_void_face_attack_03.mp3", "tags": ["Faceless Void"]},
+  {"id": 4,"name": "Earthshaker - It was your own damn fault", "url": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/9c/Vo_earthshaker_erth_kill_08.mp3", "tags": ["Earthshaker"]},
+  {"id": 5,"name": "Rubick - What a surprise!", "url": "https://static.wikia.nocookie.net/dota2_gamepedia/images/f/fa/Vo_rubick_rubick_itemcommon_02.mp3", "tags": ["Rubick"]}
 ]
