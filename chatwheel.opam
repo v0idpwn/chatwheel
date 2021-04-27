@@ -8,14 +8,13 @@ license: "MIT"
 homepage: "https://github.com/v0idpwn/chatwheel"
 bug-reports: "https://github.com/v0idpwn/chatwheel/issues"
 depends: [
-  "cohttp-lwt-unix" {= "4.0"}
-  "dune" {>= "2.8" & = "2.8"}
+  "cohttp-lwt-unix" {= "4.0.0"}
+  "dune" {>= "2.8.5" & = "2.8.5"}
   "lwt_ssl" {= "1.1.3"}
   "ocaml-lsp-server" {= "1.5.0"}
   "ocamlformat" {= "0.18.0"}
   "opium" {= "0.20.0"}
-  "ocaml" {= "4.12"}
-  "str" {= "1.2.3"}
+  "ocaml" {= "4.12.0"}
   "odoc" {with-doc}
 ]
 build: [
