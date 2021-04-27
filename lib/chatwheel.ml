@@ -25,7 +25,13 @@ let webhook req =
   let _ = Telegram_client.answer_inline_query (`String json_resp) in
   Lwt.return (Response.of_plain_text "")
 
+let port =
+  Sys.getenv_opt "PORT" |> Option.value ~default:"3000" |> int_of_string
+
 let _ =
-  App.empty |> App.get "/sys" sys_json
+  App.empty 
+  |> App.port port
+  |> App.middleware Middleware.logger
+  |> App.get "/sys" sys_json
   |> App.post "/webhook" webhook
   |> App.run_command
