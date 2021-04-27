@@ -2,6 +2,7 @@ type inline_query_result_audio = {
   audio_url : string;
   title : string;
   caption : string;
+  id : string;
 }
 
 type answer_inline_query = {
@@ -11,7 +12,8 @@ type answer_inline_query = {
 
 let from_audio (audio : Audio.audio) : inline_query_result_audio =
   let caption = List.hd audio.tags in
-  { audio_url = audio.url; title = audio.name; caption }
+  let id = string_of_int audio.id in
+  { audio_url = audio.url; title = audio.name; caption; id }
 
 let build_inline_query_answer (id : string) (audios : Audio.audio list) :
     answer_inline_query =
@@ -31,6 +33,7 @@ let to_json (answer : answer_inline_query) : Yojson.Safe.t =
                    ("audio_url", `String result.audio_url);
                    ("title", `String result.title);
                    ("caption", `String result.audio_url);
+                   ("id", `String result.id);
                  ])
              answer.results) );
     ]

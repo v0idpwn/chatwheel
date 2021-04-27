@@ -1,6 +1,6 @@
 open Yojson.Safe.Util
 
-type audio = { name : string; url : string; tags : string list }
+type audio = { id : int; name : string; url : string; tags : string list }
 
 let get_audios = Yojson.Safe.from_file "./priv/data/audio.json"
 
@@ -8,9 +8,10 @@ let from_json (json : Yojson.Safe.t) : audio list =
   List.map
     (fun item ->
       let name = to_string (member "name" item) in
+      let id = to_int (member "id" item) in
       let url = to_string (member "url" item) in
       let tags = List.map to_string (to_list (member "tags" item)) in
-      { name; url; tags })
+      { name; url; tags; id;})
     (Yojson.Safe.Util.to_list json)
 
 let is_substr str sub =
