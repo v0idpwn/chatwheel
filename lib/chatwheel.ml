@@ -15,7 +15,7 @@ let sys_json _req =
 let webhook req =
   let* body_json = Request.to_json_exn req in
   let query = Inline_input.build_query body_json in
-  let audios = Audio.top_search query.query in
+  let audios = Audio.top_search 10 query.query in
   let json_resp =
     Yojson.Safe.to_string
       (Inline_response.to_json
@@ -25,6 +25,17 @@ let webhook req =
   let _ = Telegram_client.answer_inline_query (`String json_resp) in
   Lwt.return (Response.of_plain_text "")
 
+let search req =
+  let query = Request.query "query" req in
+  match query with
+  | Some q ->
+    let audios = Audio.top_search 50 q in
+    let json = `List (List.map Audio.to_json audios) in
+    Response.of_json json |> Lwt.return
+  | None ->
+    let json = `List [] in
+    Response.of_json json |> Lwt.return
+
 let port =
   Sys.getenv_opt "PORT" |> Option.value ~default:"3000" |> int_of_string
 
@@ -33,5 +44,6 @@ let _ =
   |> App.port port
   |> App.middleware Middleware.logger
   |> App.get "/sys" sys_json
+  |> App.get "/api/search" search
   |> App.post "/webhook" webhook
   |> App.run_command

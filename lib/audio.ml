@@ -14,6 +14,13 @@ let from_json (json : Yojson.Safe.t) : audio list =
       { name; url; tags; id;})
     (Yojson.Safe.Util.to_list json)
 
+let to_json audio : Yojson.Safe.t =
+  `Assoc [
+    ("name", `String audio.name);
+    ("url", `String audio.url);
+    ("tags", `List (List.map (fun x -> `String x) audio.tags));
+  ]
+
 let is_substr str sub =
   let re = Str.regexp_string sub in
   try
@@ -26,7 +33,7 @@ let min x y = if x < y then x else y
 let rec take n xs =
   match n with 0 -> [] | _ -> List.hd xs :: take (n - 1) (List.tl xs)
 
-let top_search search =
+let top_search max_results search =
   let audios = from_json get_audios in
   let filtered =
     List.filter
@@ -36,6 +43,5 @@ let top_search search =
           (String.lowercase_ascii search))
       audios
   in
-  let max_results = min (List.length filtered) 10 in
-  let _ = List.map (fun x -> print_endline x.name) filtered in
-  take max_results filtered
+  let take_amount = min (List.length filtered) max_results in
+  take take_amount filtered
