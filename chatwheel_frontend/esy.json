@@ -15,6 +15,7 @@
     "build:prod": "build --profile=prod -f ./src/Chatwheel_frontend.bc.js"
   },
   "dependencies": {
+    "@opam/bonsai": "v0.14.0",
     "@opam/dune": "*",
     "@opam/js_of_ocaml": "~3.9.0",
     "@opam/js_of_ocaml-ppx": "~3.9.0",

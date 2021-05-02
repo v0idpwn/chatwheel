@@ -1,5 +1,6 @@
 (executable
   (name Chatwheel_frontend)
   (modes js)
-  (preprocess (pps js_of_ocaml-ppx))
+  (libraries bonsai_web)
+  (preprocess (pps ppx_jane js_of_ocaml-ppx))
 )
