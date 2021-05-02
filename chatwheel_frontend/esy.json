@@ -1,0 +1,24 @@
+{
+  "name": "chatwheel-frontend",
+  "version": "0.1.0",
+  "description": "Frontend for the chatwheel application",
+  "license": "MIT",
+  "esy": {
+    "build": "dune build --force ./src/Chatwheel_frontend.bc.js",
+    "release": {
+      "releasedBinaries": [ "Chatwheel_frontend.exe" ],
+      "deleteFromBinaryRelease": [ "*esy_ocaml_*", "*refmterr-*", "ocaml-*" ]
+    }
+  },
+  "scripts": {
+    "build:watch": "build ./src/Chatwheel_frontend.bc.js -w",
+    "build:prod": "build --profile=prod -f ./src/Chatwheel_frontend.bc.js"
+  },
+  "dependencies": {
+    "@opam/dune": "*",
+    "@opam/js_of_ocaml": "~3.9.0",
+    "@opam/js_of_ocaml-ppx": "~3.9.0",
+    "ocaml": "~4.12.0"
+  },
+  "devDependencies": { "ocaml": "~4.12.0" }
+}

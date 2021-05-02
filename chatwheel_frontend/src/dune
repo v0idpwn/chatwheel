@@ -1,0 +1,5 @@
+(executable
+  (name Chatwheel_frontend)
+  (modes js)
+  (preprocess (pps js_of_ocaml-ppx))
+)
