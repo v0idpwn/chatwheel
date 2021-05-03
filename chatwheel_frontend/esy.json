@@ -4,15 +4,15 @@
   "description": "Frontend for the chatwheel application",
   "license": "MIT",
   "esy": {
-    "build": "dune build --force ./src/Chatwheel_frontend.bc.js",
+    "build": "dune build --force ./lib/Chatwheel_frontend.bc.js",
     "release": {
       "releasedBinaries": [ "Chatwheel_frontend.exe" ],
       "deleteFromBinaryRelease": [ "*esy_ocaml_*", "*refmterr-*", "ocaml-*" ]
     }
   },
   "scripts": {
-    "build:watch": "build ./src/Chatwheel_frontend.bc.js -w",
-    "build:prod": "build --profile=prod -f ./src/Chatwheel_frontend.bc.js"
+    "build:watch": "build ./lib/Chatwheel_frontend.bc.js -w",
+    "build:prod": "build --profile=prod -f ./lib/Chatwheel_frontend.bc.js"
   },
   "dependencies": {
     "@opam/bonsai": "v0.14.0",

@@ -5,7 +5,7 @@ const outputDir = path.join(__dirname, 'build/');
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  entry: './_esy/default/build/default/src/Chatwheel_frontend.bc.js',
+  entry: './_esy/default/build/default/lib/Chatwheel_frontend.bc.js',
   mode: isProd ? 'production' : 'development',
   output: {
     path: outputDir,
@@ -17,7 +17,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'lib/index.html',
       inject: false
     })
   ],
