@@ -1,4 +1,4 @@
-(executable
+(library
   (name chatwheel_core)
   (public_name chatwheel_core)
   (preprocess (pps ppx_yojson_conv)))

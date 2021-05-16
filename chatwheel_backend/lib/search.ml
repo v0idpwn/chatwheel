@@ -1,10 +1,10 @@
-open Yojson.Safe.Util
+(* Search module *)
 
-type audio = { id : int; name : string; url : string; tags : string list }
+open Yojson.Safe.Util
 
 let get_audios = Yojson.Safe.from_file "./priv/data/audio.json"
 
-let from_json (json : Yojson.Safe.t) : audio list =
+let from_json (json : Yojson.Safe.t) : Chatwheel_core.Audio.t list =
   List.map
     (fun item ->
       let name = to_string (member "name" item) in
@@ -13,13 +13,6 @@ let from_json (json : Yojson.Safe.t) : audio list =
       let tags = List.map to_string (to_list (member "tags" item)) in
       { name; url; tags; id;})
     (Yojson.Safe.Util.to_list json)
-
-let to_json audio : Yojson.Safe.t =
-  `Assoc [
-    ("name", `String audio.name);
-    ("url", `String audio.url);
-    ("tags", `List (List.map (fun x -> `String x) audio.tags));
-  ]
 
 let is_substr str sub =
   let re = Str.regexp_string sub in

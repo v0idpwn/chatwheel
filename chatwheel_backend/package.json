@@ -8,7 +8,9 @@
     "@opam/ocaml-lsp-server": "1.5.0",
     "@opam/ocamlformat": "0.18.0",
     "@opam/opium": "0.20.0",
+    "chatwheel_core": "link:../chatwheel_core",
     "ocaml": "4.12.x",
     "str": "^1.2.3"
-  }
+  },
+  "resolutions": { "chatwheel_core": "link:../chatwheel_core" }
 }

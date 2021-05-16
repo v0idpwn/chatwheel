@@ -1,5 +1,8 @@
 {
-  "esy": { "build": "dune build -p chatwheel_core" },
+  "esy": { 
+    "build": "dune build -p chatwheel_core",
+    "install": "esy-installer chatwheel_core.install "
+  },
   "dependencies": {
     "@opam/base": "v0.14.1",
     "@opam/dune": "*",
