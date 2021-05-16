@@ -1,6 +1,6 @@
 {
-  "esy": { "build": "dune build -p chatwheel" },
-  "scripts": { "run": "esy x chatwheel" },
+  "esy": { "build": "dune build -p chatwheel_backend" },
+  "scripts": { "run": "esy x chatwheel_backend" },
   "dependencies": {
     "@opam/cohttp-lwt-unix": "4.0.0",
     "@opam/dune": "*",

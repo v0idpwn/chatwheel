@@ -1,6 +1,6 @@
 (lang dune 2.8)
 
-(name chatwheel)
+(name chatwheel_backend)
 (version 0.1.0)
 
 (generate_opam_files true)
@@ -11,8 +11,8 @@
 (license MIT)
 
 (package
- (name chatwheel)
- (synopsis "A dota 2 audio bot for telegram")
+ (name chatwheel_backend)
+ (synopsis "A dota 2 audio API")
  (depends
    (cohttp-lwt-unix (= 4.0))
    (dune (= 2.8))
