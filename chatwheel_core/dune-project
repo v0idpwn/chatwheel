@@ -1,0 +1,9 @@
+(lang dune 2.7)
+(name chatwheel_core)
+
+(package
+ (name chatwheel_core)
+ (depends
+  (ocaml (>= "4.12"))
+  ppx_yojson_conv
+  yojson))
