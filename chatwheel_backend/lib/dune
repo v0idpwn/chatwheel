@@ -2,4 +2,5 @@
   (name chatwheel_backend)
   (public_name chatwheel_backend)
   (libraries base opium cohttp cohttp-lwt-unix str chatwheel_core)
+  (preprocess (pps ppx_yojson_conv))
 )

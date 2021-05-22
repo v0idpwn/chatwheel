@@ -1,5 +1,5 @@
 {
-  "checksum": "37ededce3b31bb03da7bac6eeb44557f",
+  "checksum": "fee96d2af4cbc8d420e6982c15356269",
   "root": "chatwheel_backend@link-dev:./package.json",
   "node": {
     "yarn-pkg-config@github:esy-ocaml/yarn-pkg-config#db3a0b63883606dd57c54a7158d560d6cba8cd79@d41d8cd9": {
@@ -123,6 +123,7 @@
       "dependencies": [
         "str@1.2.3@d41d8cd9", "ocaml@4.12.0@d41d8cd9",
         "chatwheel_core@link:../chatwheel_core",
+        "@opam/ppx_yojson_conv@opam:v0.14.0@97845f62",
         "@opam/opium@opam:0.20.0@c4f81623",
         "@opam/ocamlformat@opam:0.18.0@be695bbf",
         "@opam/ocaml-lsp-server@opam:1.5.0@a7ce3ad8",

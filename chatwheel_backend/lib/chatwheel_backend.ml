@@ -21,7 +21,7 @@ let webhook req =
   let audios = Search.top_search 10 query.query in
   let json_resp =
     Yojson.Safe.to_string
-      (Inline_response.to_json
+      (Inline_response.yojson_of_inline_query_answer
          (Inline_response.build_inline_query_answer query.id audios))
   in
   let _ = Telegram_client.answer_inline_query (`String json_resp) in
@@ -40,7 +40,7 @@ let search req =
     Response.of_json json |> Lwt.return
 
 let port =
-  Caml.Sys.getenv_opt "PORT" |> Option.value ~default:"3000" |> Int.of_string
+  Sys.getenv "PORT" |> Option.value ~default:"3000" |> Int.of_string
 
 let _ =
   App.empty 

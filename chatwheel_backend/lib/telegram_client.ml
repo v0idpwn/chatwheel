@@ -11,8 +11,10 @@ let url token =
 let header : Cohttp.Header.t =
   Header.add (Header.init ()) "Content-Type" "application/json"
 
+let token : String.t =
+  Sys.getenv_exn "TELEGRAM_BOT_TOKEN"
+
 let answer_inline_query (body : Cohttp_lwt.Body.t) : Unit.t Lwt.t =
-  let token = Caml.Sys.getenv "TELEGRAM_BOT_TOKEN" in
   let uri = Uri.of_string (url token) in
   let* response, _body = Client.post uri ~body ~headers:header in
   let status = Response.status response in
