@@ -19,6 +19,8 @@
   ```
 *)
 
+open Base;;
+
 type inline_query = { id : string; query : string }
 
 let build_query json =

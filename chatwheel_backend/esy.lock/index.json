@@ -1,5 +1,5 @@
 {
-  "checksum": "7337108ec74f2449b089cdc16326670d",
+  "checksum": "37ededce3b31bb03da7bac6eeb44557f",
   "root": "chatwheel_backend@link-dev:./package.json",
   "node": {
     "yarn-pkg-config@github:esy-ocaml/yarn-pkg-config#db3a0b63883606dd57c54a7158d560d6cba8cd79@d41d8cd9": {
@@ -128,7 +128,8 @@
         "@opam/ocaml-lsp-server@opam:1.5.0@a7ce3ad8",
         "@opam/lwt_ssl@opam:1.1.3@653af026",
         "@opam/dune@opam:2.8.5@83fb0224",
-        "@opam/cohttp-lwt-unix@opam:4.0.0@7b52bbf8"
+        "@opam/cohttp-lwt-unix@opam:4.0.0@7b52bbf8",
+        "@opam/base@opam:v0.14.1@d14008e2"
       ],
       "devDependencies": []
     },

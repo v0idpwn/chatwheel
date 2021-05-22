@@ -1,4 +1,5 @@
-open Opium
+open Base;;
+open Opium;;
 
 let ( let* ) = Lwt.bind
 
@@ -7,8 +8,8 @@ let sys_json _req =
   let json : Yojson.Safe.t =
     `Assoc
       [
-        ("os-type", `String Sys.os_type);
-        ("ocaml-version", `String Sys.ocaml_version);
+        ("os-type", `String Caml.Sys.os_type);
+        ("ocaml-version", `String Caml.Sys.ocaml_version);
       ]
   in
   Response.of_json json |> Lwt.return
@@ -23,7 +24,6 @@ let webhook req =
       (Inline_response.to_json
          (Inline_response.build_inline_query_answer query.id audios))
   in
-  let _ = print_endline json_resp in
   let _ = Telegram_client.answer_inline_query (`String json_resp) in
   Lwt.return (Response.of_plain_text "")
 
@@ -33,14 +33,14 @@ let search req =
   match query with
   | Some q ->
     let audios = Search.top_search 50 q in
-    let json = `List (List.map Chatwheel_core.Audio.yojson_of_t audios) in
+    let json = `List (List.map ~f:Chatwheel_core.Audio.yojson_of_t audios) in
     Response.of_json json |> Lwt.return
   | None ->
     let json = `List [] in
     Response.of_json json |> Lwt.return
 
 let port =
-  Sys.getenv_opt "PORT" |> Option.value ~default:"3000" |> int_of_string
+  Caml.Sys.getenv_opt "PORT" |> Option.value ~default:"3000" |> Int.of_string
 
 let _ =
   App.empty 
