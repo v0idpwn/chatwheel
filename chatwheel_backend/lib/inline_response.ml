@@ -10,12 +10,12 @@ type answer_inline_query = {
   results : inline_query_result_audio list;
 }
 
-let from_audio (audio : Audio.audio) : inline_query_result_audio =
+let from_audio (audio : Chatwheel_core.Audio.t) : inline_query_result_audio =
   let caption = List.hd audio.tags in
   let id = string_of_int audio.id in
   { audio_url = audio.url; title = audio.name; caption; id }
 
-let build_inline_query_answer (id : string) (audios : Audio.audio list) :
+let build_inline_query_answer (id : string) (audios : Chatwheel_core.Audio.t list) :
     answer_inline_query =
   let audio_results = List.map from_audio audios in
   { inline_query_id = id; results = audio_results }

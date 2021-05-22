@@ -1,1 +1,1 @@
-let () = print_endline "Hello"
+module Audio = Audio

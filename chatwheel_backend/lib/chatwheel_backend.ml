@@ -33,7 +33,7 @@ let search req =
   match query with
   | Some q ->
     let audios = Search.top_search 50 q in
-    let json = `List (List.map Audio.yojson_of_t audios) in
+    let json = `List (List.map Chatwheel_core.Audio.yojson_of_t audios) in
     Response.of_json json |> Lwt.return
   | None ->
     let json = `List [] in
