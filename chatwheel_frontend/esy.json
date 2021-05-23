@@ -20,7 +20,9 @@
     "@opam/dune": "*",
     "@opam/js_of_ocaml": "~3.9.0",
     "@opam/js_of_ocaml-ppx": "~3.9.0",
-    "ocaml": "~4.12.0"
+    "ocaml": "~4.12.0",
+    "chatwheel_core": "link:../chatwheel_core"
   },
+  "resolutions": { "chatwheel_core": "link:../chatwheel_core" },
   "devDependencies": { "ocaml": "~4.12.0" }
 }
