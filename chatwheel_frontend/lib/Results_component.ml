@@ -1,6 +1,5 @@
 open! Core_kernel
 open! Bonsai_web
-open! Frontend_common
 
 let div = Vdom.Node.div
 let classes = Vdom.Attr.classes
@@ -8,7 +7,7 @@ let article = Vdom.Node.create "article"
 let figure = Vdom.Node.create "figure"
 let icon attrs = Vdom.Node.create "i" attrs []
 
-let render_result (result : Search_result.t) : Vdom.Node.t =
+let render_result (result : Chatwheel_core.Audio.t) : Vdom.Node.t =
   article [
     Vdom.Attr.classes ["media"]
   ] [

@@ -1,11 +1,10 @@
 open! Core_kernel
 open! Bonsai_web
-open! Frontend_common
 
 module Input = Unit
 
 module Model = struct
-  type t = {text: String.t; results: Search_result.t List.t} [@@deriving sexp, equal]
+  type t = {text: String.t; results: Chatwheel_core.Audio.t List.t} [@@deriving sexp, equal]
   let default = {text = ""; results = []}
 end
 
@@ -20,7 +19,7 @@ module Action = struct
   [@@deriving sexp_of]
 end
 
-let search (text : String.t) : Search_result.t = {id= 1; name= text; url= "#"}
+let search (text : String.t) : Chatwheel_core.Audio.t = {id= 1; name= text; url= "#"; tags=[]}
 
 let apply_action ~inject:_ ~schedule_event:_ () (model : Model.t) action =
   match action with

@@ -1,6 +1,5 @@
 open! Core_kernel
 open! Bonsai_web
-open! Frontend_common
 
 let search_component : ('input, 'result) Bonsai.t = 
   Bonsai.of_module (module Search_bar) ~default_model: Search_bar.Model.default
