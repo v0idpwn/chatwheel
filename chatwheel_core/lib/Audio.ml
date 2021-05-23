@@ -2,9 +2,10 @@ open Base;;
 
 type t = { id : int; name : string; url : string; tags : string list} [@@deriving yojson]
 
-let has_tag (audio : t) (search : String.t) : Bool.t =
+
+let has_a_tag (audio : t) (search : String.t List.t) : Bool.t =
   let open Base.String in
-  let result = List.find audio.tags ~f:(fun tag -> tag = search) in
+  let result = List.find audio.tags ~f:(List.mem search ~equal:(fun a b -> a = b)) in
   match result with
   | Some _ -> true
   | None -> false
