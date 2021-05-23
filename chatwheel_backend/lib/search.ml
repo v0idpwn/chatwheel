@@ -3,11 +3,7 @@
 open Base;;
 open Yojson.Safe.Util;;
 
-type t = {
-  query: string option [@default None]; 
-  tags: string list [@default []];
-  limit: int [@default 50];
-} [@@deriving yojson]
+type t = Chatwheel_core.Search.t;;
 
 let get_audios = Yojson.Safe.from_file "./priv/data/audio.json"
 
@@ -20,12 +16,14 @@ let audio_match (search : t) (a : Chatwheel_core.Audio.t) =
   in
   substr || match_tag
 
-let top_search search =
+let top_search (search : Chatwheel_core.Search.t) =
   let audios = Chatwheel_core.Audio.t_list_of_yojson get_audios in
   let filtered =
     List.filter ~f:(audio_match search) audios
   in
   List.take filtered search.limit
 
-let t_of_inline_input (inline_query : Inline_input.inline_query) =
+let t_of_inline_input (inline_query : Inline_input.inline_query) : t =
   { query = Option.some inline_query.query; tags=[]; limit = 10 }
+
+let t_of_yojson = Chatwheel_core.Search.t_of_yojson
