@@ -1,11 +1,13 @@
 {
-  "esy": { 
+  "esy": {
     "build": "dune build -p chatwheel_core",
     "install": "esy-installer chatwheel_core.install "
   },
   "dependencies": {
     "@opam/base": "v0.14.1",
     "@opam/dune": "*",
+    "@opam/ppx_jane": "v0.14.0",
+    "@opam/ppx_sexp_conv": "v0.14.3",
     "@opam/ppx_yojson_conv": "v0.14.0",
     "@opam/yojson": "1.7.0",
     "ocaml": "4.12.x"

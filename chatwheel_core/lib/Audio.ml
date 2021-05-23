@@ -1,7 +1,6 @@
 open Base;;
 
-type t = { id : int; name : string; url : string; tags : string list} [@@deriving yojson]
-
+type t = { id : int; name : string; url : string; tags : string list} [@@deriving yojson, sexp, equal]
 
 let has_a_tag (audio : t) (search : String.t List.t) : Bool.t =
   let open Base.String in
