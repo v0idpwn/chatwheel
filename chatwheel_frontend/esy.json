@@ -15,13 +15,14 @@
     "build:prod": "build --profile=prod -f ./lib/Chatwheel_frontend.bc.js"
   },
   "dependencies": {
+    "@opam/async_kernel": "v0.14.0",
     "@opam/bonsai": "v0.14.0",
     "@opam/core_kernel": "v0.14.1",
     "@opam/dune": "*",
     "@opam/js_of_ocaml": "~3.9.0",
     "@opam/js_of_ocaml-ppx": "~3.9.0",
-    "ocaml": "~4.12.0",
-    "chatwheel_core": "link:../chatwheel_core"
+    "chatwheel_core": "link:../chatwheel_core",
+    "ocaml": "~4.12.0"
   },
   "resolutions": { "chatwheel_core": "link:../chatwheel_core" },
   "devDependencies": { "ocaml": "~4.12.0" }
