@@ -15,6 +15,7 @@
     "build:prod": "build --profile=prod -f ./lib/Chatwheel_frontend.bc.js"
   },
   "dependencies": {
+    "@opam/async_js": "v0.14.0",
     "@opam/async_kernel": "v0.14.0",
     "@opam/bonsai": "v0.14.0",
     "@opam/core_kernel": "v0.14.1",

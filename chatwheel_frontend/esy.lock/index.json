@@ -1,5 +1,5 @@
 {
-  "checksum": "8b650903d360a0dfce02b770ff26ace9",
+  "checksum": "476be7df750f92e23d6ff7ef47506a80",
   "root": "chatwheel-frontend@link-dev:./esy.json",
   "node": {
     "yarn-pkg-config@github:esy-ocaml/yarn-pkg-config#db3a0b63883606dd57c54a7158d560d6cba8cd79@d41d8cd9": {
@@ -60,7 +60,8 @@
         "@opam/dune@opam:2.8.5@01003f12",
         "@opam/core_kernel@opam:v0.14.1@b086e509",
         "@opam/bonsai@opam:v0.14.0@b076d85c",
-        "@opam/async_kernel@opam:v0.14.0@6d60238d"
+        "@opam/async_kernel@opam:v0.14.0@6d60238d",
+        "@opam/async_js@opam:v0.14.0@25c94ca3"
       ],
       "devDependencies": [ "ocaml@4.12.0@d41d8cd9" ]
     },
