@@ -1,3 +1,6 @@
+#!/bin/bash
+set -eo pipefail
+
 BUILD_ROOT=`pwd`
 rm -rf bin
 mkdir bin
