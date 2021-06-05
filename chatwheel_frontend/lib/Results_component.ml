@@ -7,12 +7,15 @@ let article = Vdom.Node.create "article"
 let figure = Vdom.Node.create "figure"
 let icon attrs = Vdom.Node.create "i" attrs []
 
-let render_result (result : Chatwheel_core.Audio.t) : Vdom.Node.t =
+let render_result (input : App_input.t) (result : Chatwheel_core.Audio.t) : Vdom.Node.t =
   article [
     Vdom.Attr.classes ["media"]
   ] [
     figure [ classes ["media-left"] ] [
-      Vdom.Node.button [classes ["button"; "is-primary"]] [
+      Vdom.Node.button [
+        classes ["button"; "is-primary"];
+        Vdom.Attr.on_click (fun _ -> Effect.inject_ignoring_response (input.play_audio result.url));
+      ] [
         icon [classes ["fas"; "fa-play"]]
       ]
     ];
@@ -22,5 +25,8 @@ let render_result (result : Chatwheel_core.Audio.t) : Vdom.Node.t =
     div [classes ["media-right"]] [];
   ]
 
-let render (model : Search_bar.Model.t) =
-  Vdom.Node.div [] (List.map ~f:render_result model.results)
+let render (input : App_input.t) =
+  match input.search_results with
+  | Some audios ->
+    Vdom.Node.div [] (List.map ~f:(render_result input) audios)
+  | None -> Vdom.Node.div [] []

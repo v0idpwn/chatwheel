@@ -1,7 +1,7 @@
 open! Core_kernel
 open! Bonsai_web
 
-module Input = Unit
+module Input = App_input
 
 module Model = struct
   type t = {text: String.t; results: Chatwheel_core.Audio.t List.t} [@@deriving sexp, equal]
@@ -9,7 +9,7 @@ module Model = struct
 end
 
 module Result = struct
-  type t = Model.t * Vdom.Node.t
+  type t = Input.t * Vdom.Node.t
 end
 
 module Action = struct
@@ -21,17 +21,16 @@ end
 
 let search (text : String.t) : Chatwheel_core.Audio.t = {id= 1; name= text; url= "#"; tags=[]}
 
-let apply_action ~inject:_ ~schedule_event:_ () (model : Model.t) action =
+let apply_action ~inject:_ ~schedule_event:_ _input (model : Model.t) action =
   match action with
   | Action.ChangeText new_text -> 
       { model with text = new_text }
   | Action.Search -> 
-      let new_result = search model.text in
-      { model with results = new_result::model.results}
+      { model with results = []}
 
-let compute ~inject () (model : Model.t) =
+let compute ~inject (input : Input.t) (model : Model.t) =
   let button = Vdom.Node.button [
-    Vdom.Attr.on_click (fun _ -> inject Action.Search);
+    Vdom.Attr.on_click (fun _ -> Effect.inject_ignoring_response (input.search_query model.text));
     Vdom.Attr.classes ["button"; "is-primary"]
   ] [ Vdom.Node.text "Search" ] in
   let text_field = Vdom.Node.input [
@@ -40,7 +39,7 @@ let compute ~inject () (model : Model.t) =
     Vdom.Attr.value model.text
   ]
   [] in
-  (model, Vdom.Node.div [Vdom.Attr.classes ["field"; "has-addons"]] [
+  (input, Vdom.Node.div [Vdom.Attr.classes ["field"; "has-addons"]] [
     Vdom.Node.div [Vdom.Attr.classes ["control"]] [text_field]; 
     Vdom.Node.div [Vdom.Attr.classes ["control"]] [button];
   ])

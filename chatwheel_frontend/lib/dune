@@ -1,6 +1,7 @@
 (executable
   (name Chatwheel_frontend)
   (modes js)
-  (libraries core_kernel bonsai.web chatwheel_core)
+  (libraries virtual_dom core_kernel async_kernel async_js bonsai.web
+  js_of_ocaml chatwheel_core)
   (preprocess (pps ppx_jane js_of_ocaml-ppx))
 )
