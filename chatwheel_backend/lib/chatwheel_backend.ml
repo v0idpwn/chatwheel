@@ -3,6 +3,10 @@ open Opium;;
 
 let ( let* ) = Lwt.bind
 
+(* Static assets *)
+let static =
+  Middleware.static_unix ~local_path:"./assets/" ~uri_prefix:"/" ()
+
 (* Returns basic info about server, used as a simple health check *)
 let sys_json _req =
   let json : Yojson.Safe.t =
@@ -42,6 +46,7 @@ let _ =
   App.empty 
   |> App.port port
   |> App.middleware Middleware.logger
+  |> App.middleware static
   |> App.get "/sys" sys_json
   |> App.post "/api/search" search
   |> App.post "/webhook" webhook
