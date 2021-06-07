@@ -18,6 +18,7 @@ RUN adduser -D -H -h /usr/src/app web && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk && \
     apk add --no-cache glibc-2.28-r0.apk && \
+    npm cache verify && \
     # --unsafe-perm because we want to install esy globally as root
     npm install -g --unsafe-perm esy
 
@@ -41,6 +42,8 @@ RUN cd chatwheel_backend && \
 RUN cd chatwheel_frontend && \
     rm -rf _esy && \
     SHELL=sh esy && \
+    rm -rf node_modules && \
+    npm install && \
     npm run webpack:production && \
     cp -r build /usr/src/app/assets
 
