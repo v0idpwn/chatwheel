@@ -35,6 +35,8 @@ let compute ~inject (input : Input.t) (model : Model.t) =
   ] [ Vdom.Node.text "Search" ] in
   let text_field = Vdom.Node.input [
     Vdom.Attr.on_input (fun _ input_text -> inject (Action.ChangeText input_text));
+    Vdom.Attr.on_change (fun _ input_text ->
+      Effect.inject_ignoring_response (input.search_query input_text));
     Vdom.Attr.classes ["input"];
     Vdom.Attr.value model.text
   ]
