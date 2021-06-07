@@ -38,11 +38,12 @@ let compute ~inject (input : Input.t) (model : Model.t) =
     Vdom.Attr.on_change (fun _ input_text ->
       Effect.inject_ignoring_response (input.search_query input_text));
     Vdom.Attr.classes ["input"];
+    Vdom.Attr.placeholder "Which voiceline are you searching for?";
     Vdom.Attr.value model.text
   ]
   [] in
-  (input, Vdom.Node.div [Vdom.Attr.classes ["field"; "has-addons"]] [
-    Vdom.Node.div [Vdom.Attr.classes ["control"]] [text_field]; 
+  (input, Vdom.Node.div [Vdom.Attr.classes ["field"; "has-addons"; "is-fullwidth"]] [
+    Vdom.Node.div [Vdom.Attr.classes ["control"; "is-expanded"]] [text_field]; 
     Vdom.Node.div [Vdom.Attr.classes ["control"]] [button];
   ])
   ;;
